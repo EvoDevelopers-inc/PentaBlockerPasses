@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <RootNamespace>BlockerPasses</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
