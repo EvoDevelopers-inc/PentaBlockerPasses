@@ -123,7 +123,7 @@ namespace PentaBlockerPasses;
             var config = new Config
             {
                 Players = 6,
-                MessageByAdvertisement = "[{DEFAULT}PENTA{PURPLE}STRIKE{DEFAULT}] Открытый код — наша фишка! Большинство плагинов ждут вас на {LIME}GitHub{DEFAULT}!",
+                MessageByAdvertisement = "[{DEFAULT}PENTA{PURPLE}STRIKE{DEFAULT}][{RED}PentaBlockerPasses{DEFAULT}] Открытый код — наша фишка! Большинство плагинов ждут вас на {LIME}GitHub{DEFAULT}!",
                 Message =
                     "[{DEFAULT}PENTA{PURPLE}STRIKE{DEFAULT}] Некоторые проходы заблокированы. Для разблокировки требуется {RED}{MINPLAYERS}{DEFAULT} игроков!",
                 Maps = new Dictionary<string, List<Entities>>
