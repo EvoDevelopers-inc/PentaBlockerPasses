@@ -7,6 +7,7 @@ using CounterStrikeSharp.API.Core.Attributes;
 using CounterStrikeSharp.API.Core.Attributes.Registration;
 using CounterStrikeSharp.API.Modules.Admin;
 using CounterStrikeSharp.API.Modules.Commands;
+using CounterStrikeSharp.API.Modules.Timers;
 using CounterStrikeSharp.API.Modules.Utils;
 
 namespace PentaBlockerPasses;
@@ -16,7 +17,7 @@ namespace PentaBlockerPasses;
     {
         public override string ModuleAuthor => "thesamefabius && EvoDevelopers";
         public override string ModuleName => "PentaStrike Blocker Passes";
-        public override string ModuleVersion => "v1.0.3";
+        public override string ModuleVersion => "v1.0.4";
 
         private Config _config;
 
@@ -25,6 +26,8 @@ namespace PentaBlockerPasses;
             _config = LoadConfig();
             RegisterListener<Listeners.OnServerPrecacheResources>(OnPrecacheResources);
             RegisterEventHandler<EventRoundStart>(EventRoundStart);
+
+            AddTimer(1500, () => { },TimerFlags.REPEAT);
         }
 
         private HookResult EventRoundStart(EventRoundStart @event, GameEventInfo info)
@@ -120,8 +123,9 @@ namespace PentaBlockerPasses;
             var config = new Config
             {
                 Players = 6,
+                MessageByAdvertisement = "[{DEFAULT}PENTA{PURPLE}STRIKE{DEFAULT}] Открытый код — наша фишка! Большинство плагинов ждут вас на {LIME}GitHub{DEFAULT}!",
                 Message =
-                    "[{BLUE} BlockerPasses {DEFAULT}] Some passageways are blocked. Unblocking requires {RED}{MINPLAYERS}{DEFAULT} players",
+                    "[{DEFAULT}PENTA{PURPLE}STRIKE{DEFAULT}] Некоторые проходы заблокированы. Для разблокировки требуется {RED}{MINPLAYERS}{DEFAULT} игроков!",
                 Maps = new Dictionary<string, List<Entities>>
                 {
                     {
@@ -206,12 +210,19 @@ namespace PentaBlockerPasses;
 
             return input;
         }
+        
+        
+        private void AdvertisementToChat()
+        {
+            Server.PrintToChatAll(ReplaceColorTags(_config.MessageByAdvertisement));
+        }
     }
 
     public class Config
     {
         public int Players { get; init; }
         public required string Message { get; init; }
+        public required string MessageByAdvertisement{ get; init; }
         public Dictionary<string, List<Entities>> Maps { get; init; } = new();
     }
 
