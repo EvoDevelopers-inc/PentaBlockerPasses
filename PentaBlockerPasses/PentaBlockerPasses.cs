@@ -13,10 +13,10 @@ using CounterStrikeSharp.API.Modules.Utils;
 namespace BlockerPasses;
 
 [MinimumApiVersion(90)]
-public class BlockerPasses : BasePlugin
+public class PentaBlockerPasses : BasePlugin
 {
-    public override string ModuleAuthor => "thesamefabius";
-    public override string ModuleName => "Blocker Passes";
+    public override string ModuleAuthor => "thesamefabius && EvoDevelopers";
+    public override string ModuleName => "PentaStrike Blocker Passes";
     public override string ModuleVersion => "v1.0.3";
 
     private Config _config = null!;
